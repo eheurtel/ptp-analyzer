@@ -10,3 +10,5 @@ It may be graphed out in Wireshark in Statistics->GraphIO menu, and selecting pt
 
 
 Restrictions: PTP2, two steps only. 
+
+Usage : wireshark ptp_small_followup.pcap -X lua_script:ptp_postdissector.lua

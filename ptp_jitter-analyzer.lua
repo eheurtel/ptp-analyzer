@@ -36,7 +36,7 @@ function ptp_jitter_proto.dissector(buffer,pinfo,tree)
        subtree:add(dft_F,tostring(seq_id) .. ":" .. tostring(time_epoch.value.secs) .. "." .. tostring(time_epoch.value.nsecs))
        last_sync[seq_id] = {time_epoch = time_epoch.value}
     end
-    if flup_ts and last_sync[seq_id].time_epoch then	-- Followup Message : computes jitter = dts - dft
+    if flup_ts and last_sync[seq_id] and last_sync[seq_id].time_epoch then	-- Followup Message : computes jitter = dts - dft
        local subtree = tree:add(ptp_jitter_proto,"PTP Analysis Data")
        local last_seq_id = seq_id-1
        if last_seq_id < 0 then last_seq_id = 65535 end
